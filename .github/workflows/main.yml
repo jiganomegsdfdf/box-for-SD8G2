@@ -12,7 +12,7 @@ jobs:
       - name: Install Dependencies
         run: sudo apt update && sudo apt install build-essential libc6-dev patch gcc-14-arm-linux-gnueabi gcc-14-aarch64-linux-gnu cmake bash git dpkg python3 python-is-python3
 
-      - name: Build kernel
+      - name: Build Box86 and Box64
         run: sudo sh box_build.sh
 
       - name: Upload deb packages
