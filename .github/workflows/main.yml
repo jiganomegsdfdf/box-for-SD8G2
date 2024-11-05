@@ -5,12 +5,12 @@ on:
 
 jobs:
   box:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
         
       - name: Install Dependencies
-        run: sudo apt update && sudo apt install build-essential patch gcc-arm-linux-gnueabi g++-arm-linux-gnueabi g++-aarch64-linux-gnu gcc-aarch64-linux-gnu cmake bc flex bison 7zip kmod bash cpio binutils tar git wget dpkg libssl-dev python3 python-is-python3
+        run: sudo apt update && sudo apt install build-essential patch gcc-14-arm-linux-gnueabi g++-14-arm-linux-gnueabi g++-14-aarch64-linux-gnu gcc-14-aarch64-linux-gnu cmake bc flex bison 7zip kmod bash cpio binutils tar git wget dpkg libssl-dev python3 python-is-python3
 
       - name: Build kernel
         run: sudo sh box_build.sh
