@@ -12,8 +12,8 @@ jobs:
       - name: Install Dependencies
         run: sudo apt update && sudo apt install build-essential libc6-dev-armhf-cross libc6-dev-arm64-cross patch gcc-14-arm-linux-gnueabi gcc-14-aarch64-linux-gnu cmake bash git dpkg python3 python-is-python3
       
-      - name: Dependencies
-        run: ls /usr/arm-linux-gnueabi/include/gnu/
+      - name: Dependencies fix
+        run: sed -i 's/stubs-hard.h/stubs-soft.h/g' /usr/arm-linux-gnueabi/include/gnu/stubs.h
 
       - name: Build Box86 and Box64
         run: sudo sh box_build.sh ${{ github.workspace }}
