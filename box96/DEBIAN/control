@@ -2,7 +2,7 @@ Package: box96-SD8G2
 Version: 1.0
 Architecture: arm64
 Maintainer: jiganomegsdfdf
-Depends: binfmt-support
+Depends: binfmt-support, libc6:armhf, libc6:arm64
 Conflicts: box86, box64
 Replaces: box86, box64
 Description: Box86 and Box64 for Snapdrgon 8 Gen 2
