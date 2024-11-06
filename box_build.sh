@@ -14,7 +14,7 @@ cd ../../box86
 patch -p1 < ../patches/box86.patch
 mkdir build
 cd build
-cmake .. -DCMAKE_C_COMPILER=/usr/bin/arm-linux-gnueabi-gcc-14 -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR=aarch64 -DCMAKE_CROSSCOMPILING=TRUE -DSD8G2=1
+cmake .. -DCMAKE_C_COMPILER=/usr/bin/arm-linux-gnueabihf-gcc-14 -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR=aarch64 -DCMAKE_CROSSCOMPILING=TRUE -DSD8G2=1
 make -j$(nproc)
 make install DESTDIR=../../debs/
 cd ../../
