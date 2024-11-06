@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v4
         
       - name: Install Dependencies
-        run: sudo apt update && sudo apt install build-essential libc6-dev-armhf-cross libc6-dev-arm64-cross patch gcc-14-arm-linux-gnueabihf gcc-14-aarch64-linux-gnu cmake bash git dpkg python3 python-is-python3
+        run: sudo apt update && sudo apt install patch gcc-14-arm-linux-gnueabihf gcc-14-aarch64-linux-gnu cmake git python3 python-is-python3
 
       - name: Build Box86 and Box64
         run: sudo sh box_build.sh ${{ github.workspace }}
@@ -18,5 +18,5 @@ jobs:
       - name: Upload deb packages
         uses: actions/upload-artifact@v4
         with:
-          name: box_x86_64-armhf_arm64
+          name: box96
           path: ${{ github.workspace }}/*.deb
