@@ -41,12 +41,9 @@ chroot rootdir apt update
 chroot rootdir apt upgrade -y
 chroot rootdir apt install -y build-essential libc6-dev-armhf-cross libc6-dev-arm64-cross libc6-dev patch gcc-14-arm-linux-gnueabi gcc-14-aarch64-linux-gnu make cmake bash git dpkg python3 python-is-python3
 
-chroot rootdir git clone https://github.com/ptitSeb/box86 --depth 1
-chroot rootdir git clone https://github.com/ptitSeb/box64 --depth 1
-
-chroot rootdir "mkdir /debs"
-chroot rootdir "cd box64 && mkdir build && cd build && cmake .. -DCMAKE_C_COMPILER=/usr/bin/aarch64-linux-gnu-gcc-14 -DSD8G2=1 && make -j$(nproc) && make install DESTDIR=../../debs/ "
-chroot rootdir "cd box86 && patch -p1 < /patches/box86.patch && mkdir build && cd build && cmake .. -DCMAKE_C_COMPILER=/usr/bin/arm-linux-gnueabi-gcc-14 -DSD8G2=1 && make -j$(nproc) && make install DESTDIR=../../debs/ && cd ../../"
+mkdir -p rootdir/debs/
+chroot rootdir "git clone https://github.com/ptitSeb/box86 --depth 1 && cd box86 && patch -p1 < /patches/box86.patch && mkdir build && cd build && cmake .. -DCMAKE_C_COMPILER=/usr/bin/arm-linux-gnueabi-gcc-14 -DSD8G2=1 && make -j$(nproc) && make install DESTDIR=/debs"
+chroot rootdir "git clone https://github.com/ptitSeb/box64 --depth 1 && cd box64 && mkdir build && cd build && cmake .. -DCMAKE_C_COMPILER=/usr/bin/aarch64-linux-gnu-gcc-14 -DSD8G2=1 && make -j$(nproc) && make install DESTDIR=/debs"
 
 cp -rf rootdir/debs/* debs/
 
