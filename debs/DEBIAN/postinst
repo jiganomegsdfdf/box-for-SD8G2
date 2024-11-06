@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo update-binfmts --import box86.conf
+sudo update-binfmts --import box64.conf
+sudo update-binfmts --enable
