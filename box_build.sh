@@ -1,6 +1,8 @@
 git clone https://github.com/ptitSeb/box86 --depth 1
 git clone https://github.com/ptitSeb/box64 --depth 1
 
+cp $1/*hard* /usr/arm-linux-gnueabi/include/gnu/
+
 cd box64
 mkdir build
 cd build
